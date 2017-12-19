@@ -218,6 +218,7 @@ public class Info extends Fragment {
                             Request newRequest = chain.request().newBuilder()
                                     .addHeader("Authorization",token)
                                     .build();
+                            Log.d("Na sasho tokena",token);
                             return chain.proceed(newRequest);
                         }
                     }).build();
@@ -236,7 +237,7 @@ public class Info extends Fragment {
 
                     UpdateDto body = new UpdateDto(matchId, home_players, home_subs, away_players, away_subs);
 
-                    Log.d("DEEEEEEEBA",body.getMatchID());
+                    Log.d("DEEEEEEEBA",body.getMatchId());
 
                     service.update(body).enqueue(new Callback<ResponseBody>() {
                         @Override

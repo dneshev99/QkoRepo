@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class UpdateDto {
 
-    private String MatchID;
+    private String MatchId;
     private ArrayList<String> playersHome;
     private ArrayList<String> playersAway;
     private ArrayList<String> subsHome;
     private ArrayList<String> subsAway;
 
-    public UpdateDto(String MatchID, ArrayList<String> playersHome, ArrayList<String> playersAway, ArrayList<String> subsHome, ArrayList<String> subsAway) {
-        this.MatchID = MatchID;
+    public UpdateDto(String MatchId, ArrayList<String> playersHome, ArrayList<String> playersAway, ArrayList<String> subsHome, ArrayList<String> subsAway) {
+        this.MatchId = MatchId;
         this.playersHome = playersHome;
         this.playersAway = playersAway;
         this.subsHome = subsHome;
@@ -27,8 +27,8 @@ public class UpdateDto {
     }
 
 
-    public String getMatchID() {
-        return MatchID;
+    public String getMatchId() {
+        return MatchId;
     }
 
     public ArrayList<String> getPlayersHome() {
