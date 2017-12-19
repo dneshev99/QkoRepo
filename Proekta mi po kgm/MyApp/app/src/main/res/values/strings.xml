@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My App</string>
+    <string name="title_activity_select_image">SelectImageActivity</string>
+    <string name="title_activity_manipulate_image">ManipulateImageActivity</string>
+    <string name="brightness">TextView</string>
+    <string name="title_activity_select_option">SelectOptionActivity</string>
+    <string name="title_activity_image_negative">ImageNegativeActivity</string>
+</resources>
