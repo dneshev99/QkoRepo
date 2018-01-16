@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/3_REST.iml" filepath="$PROJECT_DIR$/3_REST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/3_REST_main.iml" filepath="$PROJECT_DIR$/.idea/modules/3_REST_main.iml" group="3_REST" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/3_REST_test.iml" filepath="$PROJECT_DIR$/.idea/modules/3_REST_test.iml" group="3_REST" />
+    </modules>
+  </component>
+</project>

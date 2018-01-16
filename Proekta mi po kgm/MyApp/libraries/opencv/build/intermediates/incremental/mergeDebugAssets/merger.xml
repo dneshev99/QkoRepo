@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\MyApp\libraries\opencv\src\main\assets"/><source path="E:\MyApp\libraries\opencv\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\MyApp\libraries\opencv\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\QkoRepo\Proekta mi po kgm\MyApp\libraries\opencv\src\main\assets"/><source path="D:\QkoRepo\Proekta mi po kgm\MyApp\libraries\opencv\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\QkoRepo\Proekta mi po kgm\MyApp\libraries\opencv\src\debug\assets"/></dataSet></merger>
