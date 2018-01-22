@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">RefPRO Mobile</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_english">Englisch</string>
+    <string name="action_bulgarian">Bulgarisch</string>
+    <string name="action_german">Deutsch</string>
+    <string name="title_activity_login">Sign in to RefPRO</string>
+
+    <string name="nav_menu">Menü</string>
+    <string name="nav_create">Spiel hinzufügen</string>
+
+    <!-- Strings related to Menu -->
+    <string name="fixtures">bevorstehende Spiele</string>
+
+    <!-- Strings related to Create -->
+    <string name="add_match">Spiel hinzufügen</string>
+    <string name="create_match">Hinzufügen</string>
+
+    <string name="competition">Wettbewerb(1-100)</string>
+    <string name="venue">Ort(1-50)</string>
+    <string name="date">Datum (JJJJ-MM-TT)</string>
+    <string name="time">Anfangsstunde(SS:MM)</string>
+    <string name="home">Gastgeber(1-30)</string>
+    <string name="away">Gast(1-30)</string>
+    <string name="homeabbr">Gastgeber, Kürzung (1-5)</string>
+    <string name="awayabbr">Gast, Kürzung (1-5)</string>
+    <string name="players">Spieleranzahl (8-15)</string>
+    <string name="subs">Anzahl der Reservespieler (3-12)</string>
+    <string name="length">Dauer der Halbzeit (30m - 55m)</string>
+
+    <string name="create_error">Nemski Wrong format!!!</string>
+
+    <string name="create_success">Das Spiel wurde hinzugefügt!!!</string>
+    <string name="error">Ein Fehler ist passiert!!!</string>
+
+    <!-- Strings related to Info -->
+    <string name="home_players">Gastgeber (Spieler)</string>
+    <string name="away_players">Gast (Spieler)</string>
+    <string name="home_subs">Gastgeber (Reservespieler)</string>
+    <string name="away_subs">Gast (Reservespielier)</string>
+
+    <string name="players_form">Number/Name (1.Manuel Neuer) </string>
+
+    <string name="empty_field">Nemski empty field</string>
+
+    <string name="start_match">Spiel anfangen</string>
+
+    <!-- Strings related to AlertDialog -->
+
+    <string name="open">Öffne </string>
+    <string name="edit">Edit </string>
+    <string name="delete">Lösche </string>
+
+    <string name="options">Spieloprionen </string>
+    <string name="alert_text">Öffne oder Lösche das Spiel? </string>
+    <string name="delete_success">Das Spiel wurde gelöscht!!! </string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_username">Name</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="action_sign_in">Eingang/ Anmelden</string>
+    <string name="action_sign_in_short">Log in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
