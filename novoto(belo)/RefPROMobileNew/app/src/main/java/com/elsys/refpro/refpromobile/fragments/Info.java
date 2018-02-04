@@ -21,7 +21,9 @@ import android.widget.Toast;
 
 import com.elsys.refpro.refpromobile.database.LocalDatabase;
 import com.elsys.refpro.refpromobile.R;
+import com.elsys.refpro.refpromobile.http.FirebaseService;
 import com.elsys.refpro.refpromobile.http.UpdateMatchService;
+import com.elsys.refpro.refpromobile.http.dto.NotificationDTO;
 import com.elsys.refpro.refpromobile.http.dto.UpdateMatchDto;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
@@ -206,12 +208,7 @@ public class Info extends Fragment {
                     Toast.makeText(getActivity(), "Match started",
                             Toast.LENGTH_LONG).show();
 
-                    FirebaseMessaging fm = FirebaseMessaging.getInstance();
-                    fm.send(new RemoteMessage.Builder("cgwD38TVwck:APA91bHkOjpSfT_dcBZkvlX1S5inkBztySMKM6uVC-hm1C_h2DV6Uo_5xeNxAtdtN-bA0o-usIyWrQCVCETRS3giRmD3E4pPqosrocJ908mWxUJRHHM8aVCfXeQG4zqlYbzUYzBidLjI" + "@gcm.googleapis.com")
-                            .setMessageId(Integer.toString(1))
-                            .addData("my_message", "Hello World")
-                            .addData("my_action","SAY_HELLO")
-                            .build());
+
 
                     final String token = finalPreferences.getString("token","N/A");
 
@@ -226,9 +223,28 @@ public class Info extends Fragment {
                         }
                     }).build();
 
+
+                    OkHttpClient firebaseClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+                        @Override
+                        public okhttp3.Response intercept(Chain chain) throws IOException {
+                            Request newRequest = chain.request().newBuilder()
+                                    .addHeader("Authorization","AAAAjh3KD7U:APA91bHcDRfM4Vk96KnYf2TA_AagYbyB2Y23iRvahJEuF5mgsooL--JN7FYN4UPyisZVizN5lIB5Jl768AqiDc0ex_vbZtfg9qNxJHT8n91I8nt2t94UYjx6uJrViLps0d7jC7dB-m1k")
+                                    .build();
+                            return chain.proceed(newRequest);
+                        }
+                    }).build();
+
+
+
                     Retrofit retrofit = new Retrofit.Builder()
                             .client(client)
                             .baseUrl("http://10.0.2.2:8080")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Retrofit firebase = new Retrofit.Builder()
+                            .client(firebaseClient)
+                            .baseUrl("https://fcm.googleapis.com")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
 
@@ -241,9 +257,26 @@ public class Info extends Fragment {
 
                     String matchId = data.getString(12);
 
-                    UpdateMatchDto body = new UpdateMatchDto(matchId, homePlayers, homeSubs, awayPlayers, awaySubs);
+                    NotificationDTO notificationDTO = new NotificationDTO();
 
-                    Log.d("DEEEEEEEBA",body.getMatchId());
+                    notificationDTO.setRecipient("ebFqZ8l55s0:APA91bEvUNY2VYb6NtHD31ywIuLFdaE-IKFhfVGjQQFv9gjFWc5bKGUo1HCTIfGuunipB2zoliEIwdM30UXWMdGr_lW-ig0iMcGEq0wxL8ibNE5skAL35Ju_e-NBZvsq44XU4BJR5EC_");
+                    notificationDTO.addData("id","5");
+
+                    FirebaseService firebaseService = firebase.create(FirebaseService.class);
+
+                    firebaseService.sendNotification(notificationDTO).enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            Log.d("Firebase AAA", response.message());
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Log.d("Firebase AAA ERROR" , t.getMessage());
+                        }
+                    });
+
+                    UpdateMatchDto body = new UpdateMatchDto(matchId, homePlayers, homeSubs, awayPlayers, awaySubs);
 
                     service.update(body).enqueue(new Callback<ResponseBody>() {
                         @Override
@@ -262,6 +295,8 @@ public class Info extends Fragment {
 
 
                     });
+
+
 
                     Menu menu = new Menu();
                     android.app.FragmentManager fragmentManager = getFragmentManager();

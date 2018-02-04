@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "610385137589",
+    "firebase_url": "https://refpro-tues.firebaseio.com",
+    "project_id": "refpro-tues",
+    "storage_bucket": "refpro-tues.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610385137589:android:325d7c89c065f84f",
+        "android_client_info": {
+          "package_name": "com.elsys.refpro.refprowatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610385137589-gd72mgpl9c3gpbb2es9r1qrfpgofdqt1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKKY6Xi0AylWcsnzeifS1qUAAzeNN3Xxk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

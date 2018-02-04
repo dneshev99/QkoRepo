@@ -1,6 +1,8 @@
 package com.elsys.refpro.refprowatch.events;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.elsys.refpro.refprowatch.http.EventService;
@@ -60,8 +62,11 @@ public class CreateEvent {
 
     private void sendEvent(MatchEventDTO newEvent) {
 
-        //final String token = preferences.getString("token","N/A");
-        final String token = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxNDM4NDIyMX0";
+        SharedPreferences preferences = context.getSharedPreferences("RefPRO" , 0);
+
+        final String token = preferences.getString("token","N/A");
+        Log.d("Sasho",preferences.getString("WebToken","kakakak"));
+        Log.d("Kor",token);
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -123,8 +128,9 @@ public class CreateEvent {
 
     private void sendState(MatchStateDTO newEvent) {
 
-        //final String token = preferences.getString("token","N/A");
-        final String token = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUxNDM4NDIyMX0";
+        SharedPreferences preferences = context.getSharedPreferences("RefPRO",0);
+        Log.d("Sasho",preferences.getString("WebToken","kakakak"));
+        final String token = preferences.getString("token","N/A");
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override

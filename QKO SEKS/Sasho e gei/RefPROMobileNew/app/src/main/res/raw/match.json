@@ -1,0 +1,21 @@
+{
+
+	"isActive" : false,
+	"competition" : "La Liga",
+	"venue" : "Camp Nou",
+	"date" : "2017-12-23",
+	"time" : "19:45",
+	"home" : "Barcelona FC",
+	"away" : "eReal Madrid C.F.",
+	"homeabbr" : "BAR",
+	"awayabbr" : "RMA",
+	"players" : 11,
+	"subs" : 7,
+	"length" : 45,
+	"playersHome" : null,
+	"playersAway" : null,
+	"subsHome" : null,
+	"subsAway" : null,
+	"log" : null
+
+}

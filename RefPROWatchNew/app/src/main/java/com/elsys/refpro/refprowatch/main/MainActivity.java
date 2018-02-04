@@ -71,7 +71,7 @@ public class MainActivity extends WearableActivity implements View.OnClickListen
         setContentView(R.layout.activity_main);
         setAmbientEnabled();
 
-        SharedPreferences clear = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        SharedPreferences clear = getApplicationContext().getSharedPreferences("RefPRO", Context.MODE_PRIVATE);
         clear.edit().clear().apply();               // CLEARS all information about yellow and red cards
 
         //region BasicInfo REPLACE WITH STRING FROM MOBILE

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.wearable.activity.WearableActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.elsys.refpro.refprowatch.http.LoginService;
 import com.elsys.refpro.refprowatch.http.dto.AccountDto;
 import com.elsys.refpro.refprowatch.main.MainActivity;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -45,6 +47,8 @@ public class Login extends WearableActivity {
         loading = (ProgressBar) findViewById(R.id.progressBar);
 
         preferences = getSharedPreferences("RefPRO" , 0);
+
+        Log.d("Sasho kurva", "Kor: " + FirebaseInstanceId.getInstance().getToken());
 
 
         signButton.setOnClickListener(new View.OnClickListener() {
@@ -77,8 +81,11 @@ public class Login extends WearableActivity {
                             if (response.isSuccessful()) {
 
                                 SharedPreferences.Editor prefsEditor = preferences.edit();
-                                prefsEditor.putString("token", response.headers().get("authorization"));
+                                Log.d("Sasho",response.headers().get("authorization"));
+                                prefsEditor.putString("WebToken", response.headers().get("authorization"));
                                 prefsEditor.apply();
+
+                                Log.d("Sasho1",preferences.getString("WebToken","Sasho e gei"));
 
                                 Intent app = new Intent(getApplicationContext(), MainActivity.class);
                                 app.putExtra("Username", userString);

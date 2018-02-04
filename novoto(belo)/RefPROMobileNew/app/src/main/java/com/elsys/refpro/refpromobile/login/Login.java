@@ -14,12 +14,20 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.elsys.refpro.refpromobile.R;
+import com.elsys.refpro.refpromobile.http.FirebaseService;
 import com.elsys.refpro.refpromobile.http.LoginService;
+import com.elsys.refpro.refpromobile.http.UpdateMatchService;
 import com.elsys.refpro.refpromobile.http.dto.AccountDto;
+import com.elsys.refpro.refpromobile.http.dto.NotificationDTO;
 import com.elsys.refpro.refpromobile.main.MainActivity;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,17 +69,52 @@ public class Login extends AppCompatActivity {
 
                     vibrator.vibrate(300);
                 } else {
-                    FirebaseMessaging fm = FirebaseMessaging.getInstance();
-                    fm.send(new RemoteMessage.Builder("cgwD38TVwck:APA91bHkOjpSfT_dcBZkvlX1S5inkBztySMKM6uVC-hm1C_h2DV6Uo_5xeNxAtdtN-bA0o-usIyWrQCVCETRS3giRmD3E4pPqosrocJ908mWxUJRHHM8aVCfXeQG4zqlYbzUYzBidLjI" + "@gcm.googleapis.com")
-                            .setMessageId(Integer.toString(1))
-                            .addData("my_message", "Hello World")
-                            .addData("my_action","SAY_HELLO")
-                            .build());
+                    OkHttpClient firebaseClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+                        @Override
+                        public okhttp3.Response intercept(Chain chain) throws IOException {
+                            Request newRequest = chain.request().newBuilder()
+                                    .addHeader("Content-Type","application/json")
+                                    .addHeader("Authorization","key=AAAAjh3KD7U:APA91bHcDRfM4Vk96KnYf2TA_AagYbyB2Y23iRvahJEuF5mgsooL--JN7FYN4UPyisZVizN5lIB5Jl768AqiDc0ex_vbZtfg9qNxJHT8n91I8nt2t94UYjx6uJrViLps0d7jC7dB-m1k")
+                                    .build();
+                            return chain.proceed(newRequest);
+                        }
+                    }).build();
+
+
+                    Retrofit firebase = new Retrofit.Builder()
+                            .client(firebaseClient)
+                            .baseUrl("https://fcm.googleapis.com")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+
+
+                    NotificationDTO notificationDTO = new NotificationDTO();
+
+                    notificationDTO.setRecipient("eGsOcAisQM8:APA91bHB4q9HCMYREtwK4b1lwF6YOq067JO_mqJ-oqCjzTigHMapjArMZi6CwQyLsWWmRZIplmv_4mhu0we23p0B6uZPSPeiKFniE5bOXWlOMC6XMMgs9aWMXHVFqpRJD977fx5OmFsq");
+                    notificationDTO.addData("id","5");
+
+                    FirebaseService firebaseService = firebase.create(FirebaseService.class);
+
+                    firebaseService.sendNotification(notificationDTO).enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            Log.d("Firebase AAA", response.message());
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Log.d("Firebase AAA ERROR" , t.getMessage());
+                        }
+                    });
 
                     Intent app = new Intent(getApplicationContext(), MainActivity.class);
                     app.putExtra("Username", userString);
                     app.putExtra("Password", passString);
                     startActivity(app);
+
+
+
                     /*
 
                     Retrofit retrofit = new Retrofit.Builder()
