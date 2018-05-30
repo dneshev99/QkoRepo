@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Traders</string>
+    <string name="leftMainButton">2nd Activity!</string>
+    <string name="rightMainButton">3rd Activity!</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="register_login">Регистрирай се</string>
+    <string name="logIn">Log In</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="category_text">Choose a Category</string>
+    <string name="back_button">Back</string>
+    <string name="name">Name:</string>
+    <string name="account_type">Account Type:</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="username">Username:</string>
+    <string name="email">Email:</string>
+    <string name="password">Password:</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="register">Register:</string>
+    <string name="sign_in">Sign In</string>
+    <string name="new_listing">New Listing</string>
+    <string name="create_a_new_listing">Create a new listing:</string>
+    <string name="phone">Phone:</string>
+</resources>
